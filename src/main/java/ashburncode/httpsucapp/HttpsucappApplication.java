@@ -16,14 +16,15 @@ public class HttpsucappApplication {
   private static final String USER_AGENT = "Mozilla/5.0";
   // private static final String GET_URL =
   // "https://localhost:9090/SpringMVCExample";
-  private static final String GET_URL = "https://start.spring.io/";
+  // private static final String GET_URL = "https://start.spring.io/";
+  private static final String GET_URL = "https://start.spring.io/actuator/health";
   private static final String POST_URL = "https://localhost:9090/SpringMVCExample/home";
   private static final String POST_PARAMS = "userName=Pankaj";
 
   public static void main(String[] args) {
     SpringApplication.run(HttpsucappApplication.class, args);
     try {
-      String response = createClientMakeGetGetuest(GET_URL);
+      String response = createClientMakeGetGetRequest(GET_URL);
       System.out.println("response = " + response);
     } catch (IOException e) {
       // TODO Auto-generated catch block
@@ -38,8 +39,8 @@ public class HttpsucappApplication {
 
   // https://www.digitalocean.com/community/tutorials/java-httpurlconnection-example-java-http-request-get-post
 
-  private static String createClientMakeGetGetuest(String getUrl) throws IOException {
-		System.out.println("createClientMakeGetGetuest getUrl = " + getUrl);
+  private static String createClientMakeGetGetRequest(String getUrl) throws IOException {
+		System.out.println("createClientMakeGetGetRequest getUrl = " + getUrl);
 		URL obj = new URL(GET_URL);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
@@ -58,6 +59,7 @@ public class HttpsucappApplication {
 			response = responseBuffer.toString();
 		} else {
 			response = "createClientMakeGetRequest did not work.";
+      // add code to read the non-200 response string
 		}
     return response;
 	}
